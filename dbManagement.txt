@@ -1,0 +1,41 @@
+https://www.sammeechward.com/deploying-full-stack-js-to-aws-ec2
+
+For MYSQL
+
+sudo apt install mysql-server
+
+sudo systemctl start mysql
+sudo systemctl enable mysql
+
+sudo mysql -u root
+
+// connection and setup of db on system
+CREATE DATABASE blogspot;
+CREATE USER 'admins'@'localhost' IDENTIFIED WITH mysql_native_password BY '739455';
+GRANT ALL PRIVILEGES ON blogspot.* TO 'admins'@'localhost';
+USE blogspot;
+
+CREATE TABLE blogsDB (
+    blogspot_id SERIAL PRIMARY KEY,
+    filepath VARCHAR(100) NOT NULL UNIQUE,
+    title VARCHAR(20) NOT NULL,
+    username VARCHAR(255),
+    release_month VARCHAR(255),
+    release_year VARCHAR(255),
+    cover_img_url VARCHAR(255)
+);
+
+DROP TABLE IF EXISTS centersdb;
+
+INSERT INTO CentersDB (center_name, district_name, state_name, date_of_initiation,center_info,email_id) VALUES ('SHREE MATA SHEETLA DEVI', 'GURGAON','HARYANA','APRIL 2019','set up in fhdkjfgbn and working now for sgfkjdgh','hindlabsbilaspur@lifecarehll.com');
+
+UPDATE CentersDB
+SET img_urls=ARRAY[
+    'https://github.com/GurugramIT/ImagesForDashboard/blob/main/Investment%20for%20the%20future%20-%20Made%20with%20PosterMyWall(1).jpg?raw=true',
+    'http://www.blogspot.in/sites/default/files/Centers%20Images/WhatsApp%20Image%202023-11-01%20at%2011.34.56%20AM.jpeg'
+]
+WHERE center_name='AIIMS MANGALAGIRI';
+
+
+DELETE FROM centersdb WHERE center_name='AIIMS BILASPUR';
+

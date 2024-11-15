@@ -1,0 +1,24 @@
+import React from "react";
+
+import Header from "./Header";
+
+export default function filename() {
+    const nodeBackendURL = sessionStorage.getItem("nodeBackendURL");
+    const username='';
+    const filename='';
+
+    React.useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(nodeBackendURL/username/filename, {
+        mode: "cors",
+      });
+      const jsons = await response.json();
+
+      if (response.ok) {
+        set_author(jsons);
+        console.log("connected");
+      }
+    };
+    fetchData();
+  }, [nodeBackendURL]);
+  return (
