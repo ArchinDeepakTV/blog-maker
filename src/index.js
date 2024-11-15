@@ -49,10 +49,7 @@ function readTXT(username, filename) {
 }
 
 // ! GET AND POST
-app.get("/", (req, res) => {
-  res.status(200).json("Archin Deepak");
-});
-
+// ? OPENING A PARTICULAR BLOG
 app.get("/:username/:filename", (req, res) => {
   const username = req.params.username;
   const filepath = req.params.filename;
@@ -87,6 +84,11 @@ app.post("/new-page", async (req, res) => {
   });
 
   res.status(200).json(`Inserted ${name} @ ${amount}`);
+});
+
+// ? DEFAULT RUNNING GET
+app.get("/", (req, res) => {
+  res.status(200).json("Archin Deepak");
 });
 
 app.listen(PORT, () => {
